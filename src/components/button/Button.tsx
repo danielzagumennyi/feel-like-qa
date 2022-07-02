@@ -1,6 +1,6 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
-export const Button = styled.div<{ $type?: "primary" | "secondary" }>`
+export const Button = styled.div<{ $type?: 'primary' | 'secondary' }>`
   min-height: 68px;
   display: inline-flex;
   align-items: center;
@@ -13,7 +13,7 @@ export const Button = styled.div<{ $type?: "primary" | "secondary" }>`
   border-radius: 18px;
   user-select: none;
 
-  ${p => p.$type === "secondary" && `
+  ${p => p.$type === 'secondary' && `
     background: #D9E0E8;
     color: #13191F;
   `}
@@ -21,4 +21,4 @@ export const Button = styled.div<{ $type?: "primary" | "secondary" }>`
   & + & {
     margin-left: 24px;
   }
-`;
+`

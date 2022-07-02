@@ -1,7 +1,7 @@
 
 import styled, { createGlobalStyle } from 'styled-components'
-import { Cursor } from './components/cursor/Cursror';
-import { Start } from './pages/Start';
+import { Cursor } from './components/cursor/Cursror'
+import { Start } from './pages/Start'
 
 const GlobalStyles = createGlobalStyle`
   *, *::before, *::after {
@@ -25,7 +25,7 @@ const GlobalStyles = createGlobalStyle`
     position: relative;
     min-width: 320px;
     font-size: 1rem;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    font-family: Rubik;
     font-size: 16px;
     line-height: 1.5;
     color: #13191F;
@@ -34,12 +34,11 @@ const GlobalStyles = createGlobalStyle`
   #root {
     height: 100%;
   }
-`;
+`
 
 const App = () => {
-
   return (<>
-  <GlobalStyles />
+    <GlobalStyles />
     <Root>
       <Cursor />
       <Start />
@@ -50,6 +49,6 @@ const App = () => {
 
 const Root = styled.div`
   height: 100%;
-`;
+`
 
 export default App

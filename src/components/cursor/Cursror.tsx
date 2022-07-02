@@ -1,55 +1,52 @@
-import anime from "animejs";
-import { useEffect, useRef, useState } from "react";
-import styled from "styled-components";
+import { useEffect, useRef, useState } from 'react'
+import styled from 'styled-components'
 
-import { gsap } from "gsap";
+import { gsap } from 'gsap'
 
-let mouseX = 0, mouseY = 0, posX = 0, posY = 0;
+let mouseX = 0; let mouseY = 0; let posX = 0; let posY = 0
 
 export const Cursor = () => {
   const refPoint = useRef(null)
   const refAura = useRef(null)
 
-  const [hovered, setHovered] = useState(false);
+  const [hovered] = useState(false)
 
- useEffect(() => {
-    
+  useEffect(() => {
     const anim = gsap.to({}, {
       duration: 0.01,
       repeat: -1,
       onRepeat: () => {
-        posX += (mouseX - posX) / 10;
-        posY += (mouseY - posY) / 10;
+        posX += (mouseX - posX) / 10
+        posY += (mouseY - posY) / 10
 
         gsap.set(refPoint.current, {
           css: {
-            
+
             left: mouseX,
-            top: mouseY,
+            top: mouseY
           }
-        });
-  
+        })
+
         gsap.set(refAura.current, {
           css: {
             left: posX - 25,
-            top: posY - 25,
+            top: posY - 25
           }
-        });
+        })
       }
-    });
-
+    })
 
     const listener = (e: MouseEvent) => {
-      mouseX = e.pageX;
-      mouseY = e.pageY;
+      mouseX = e.pageX
+      mouseY = e.pageY
     }
 
-    document.addEventListener("mousemove", listener)
+    document.addEventListener('mousemove', listener)
     return () => {
-      document.removeEventListener("mousemove", listener);
-      anim.kill();
+      document.removeEventListener('mousemove', listener)
+      anim.kill()
     }
- }, [])
+  }, [])
 
   return <>
     <Aura ref={refAura} />
@@ -69,7 +66,7 @@ const Aura = styled.div`
   height: 48px;
   background-color: #0a6ee82a;
   transform: translate(5px, 5px);
-`;
+`
 
 const Point = styled.div<{ $hovered: boolean }>`
   position: absolute;
@@ -84,4 +81,4 @@ const Point = styled.div<{ $hovered: boolean }>`
   background-color: black;
 
  
-`;
+`
