@@ -1,5 +1,6 @@
 import { ReactNode } from 'react'
 import { IColumnOrderModule } from '../store/columnOrder'
+import { IColumnResizeModule } from '../store/columnResize'
 import { IColumnVisibleModule } from '../store/columnVisible'
 import { IFilteringModule } from '../store/filtering'
 
@@ -30,4 +31,5 @@ export type State<ROW extends RowData = RowData> = {
   filtering: IFilteringModule | null;
   columnVisible: IColumnVisibleModule | null;
   columnOrder: IColumnOrderModule | null;
+  columnResize: IColumnResizeModule | null;
 }

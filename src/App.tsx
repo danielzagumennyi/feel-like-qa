@@ -91,6 +91,7 @@ const App = () => {
 
 const Root = styled.div`
   height: 100%;
+  padding: 24px;
 `
 
 export default App

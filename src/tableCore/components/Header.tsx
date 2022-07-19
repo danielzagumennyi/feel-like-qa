@@ -7,6 +7,8 @@ export const Header = memo(function Header ({ field }: {field: string }) {
     (state) => state.columns.find(item => item.field === field)
   )
 
+  // const { } = useStore()
+
   return <Wrapper>
         <div>
           {data?.field}
@@ -17,4 +19,6 @@ export const Header = memo(function Header ({ field }: {field: string }) {
 const Wrapper = styled.div`
   background-color: white;
   padding: 4px 8px;
+  resize: horizontal;
+  overflow: auto;
 `
