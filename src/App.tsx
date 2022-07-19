@@ -1,7 +1,9 @@
 
+import { useState } from 'react'
 import styled, { createGlobalStyle } from 'styled-components'
-import { Cursor } from './components/cursor/Cursror'
-import { Start } from './pages/Start'
+import { mockData } from './table/mocaData'
+import { TableCore } from './tableCore/TableCore'
+import { ColumnDef } from './tableCore/types/tableCoreType'
 
 const GlobalStyles = createGlobalStyle`
   *, *::before, *::after {
@@ -10,9 +12,9 @@ const GlobalStyles = createGlobalStyle`
     box-sizing: border-box;
   }
 
-  * {
+  /* * {
     cursor: none;
-  }
+  } */
 
   :root {
     --index: calc(1vw + 1vh);
@@ -20,7 +22,7 @@ const GlobalStyles = createGlobalStyle`
 
   html, body {
     
-    overflow: hidden;
+    /* overflow: hidden; */
     height: 100%;
     position: relative;
     min-width: 320px;
@@ -37,11 +39,51 @@ const GlobalStyles = createGlobalStyle`
 `
 
 const App = () => {
+  const [data, setData] = useState(mockData.data)
+
+  const [columns] = useState<ColumnDef<typeof mockData.data[number]>[]>([
+    {
+      field: 'id',
+      render: (data) => <div>{data.id}</div>
+    },
+    {
+      field: 'brand'
+    },
+    {
+      field: 'price'
+    },
+    {
+      field: 'bsr'
+    },
+    {
+      field: 'rating'
+    },
+    {
+      field: 'reviews'
+    },
+    {
+      field: 'numberOfImages'
+    },
+    {
+      field: 'variationsCount'
+    },
+    {
+      field: 'yearSales'
+    }
+  ])
+
   return (<>
     <GlobalStyles />
     <Root>
-      <Cursor />
-      <Start />
+      {/* <Cursor /> */}
+
+      <button onClick={() => {
+        setData(data.map(item => ({ ...item })))
+      }}>
+        update data
+      </button>
+
+      <TableCore columns={columns} data={data} />
     </Root>
   </>
   )
